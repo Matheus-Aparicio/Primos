@@ -1,0 +1,43 @@
+{% extends "layout_calculo.html" %}
+
+{% block conteudo %}
+<h1 id="titulo" class="mt-5">Calculadora de divisores</h1>
+<p id="instrucao" class="lead">Insira um número abaixo para listar seus divisores e informar se é ou não um número primo.</p>
+
+
+
+<!-- Caixa de texto para o número -->
+<div style="text-align: center;">
+    <form style="padding-bottom: 10px;">
+        <input id="campo_numero" type="number" min="1" name="campo_numero" value="{{num}}">
+        <br><br>
+        <input value="Calcular" type="submit" method="GET" class="btn btn-dark">
+    </form>
+</div>
+      
+<!-- Tabela dos divisores -->
+<div style="padding-top: 10px;">
+    <p id="primo">{{numero}}</p>
+
+    <table id="tabela" class="table table-dark" >
+        <tr>
+            <th>Divisores:</th>
+        </tr>
+        {% for num in nums %}
+        <tr>
+            <td class="numeros"> {{ num }} </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<!-- Script para informar se é ou não um número primo. -->
+<script>
+    x = document.getElementsByClassName("numeros");
+    if (x.length == 2) {
+        document.getElementById("primo").innerText += " é um número primo."
+    } else {
+        document.getElementById("primo").innerText += " não é um número primo."
+    }
+</script>
+{% endblock %}

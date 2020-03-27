@@ -1,0 +1,41 @@
+{% extends "layout_historico.html" %}
+
+{% block conteudo %}
+
+<h1 id="titulo" class="mt-5">Histórico</h1>
+
+<!-- Tabela dos divisores -->
+<div style="padding-top: 10px;">
+    <table id="tabela" class="table table-dark" >
+        <tr>
+            <th>Números submetidos:</th>
+            <th>É um número primo?</th>
+        </tr>
+
+        <!-- Listar o histórico -->
+        {% for numero in numeros %}
+
+            <tr>
+                <td> {{ numero.num }} </td>
+                <td class="primo"> {{ numero.primo }} </td>
+            </tr>
+
+        {% endfor %}
+
+        <!-- Script para "traduzir" o True para sim e o False para não -->
+        <script>
+            var x = document.getElementsByClassName("primo");
+            for (var i = 0; i < x.length; i++) {
+                if (x[i].innerHTML == " True ") {
+                    x[i].innerHTML = "Sim";
+                } else {
+                    x[i].innerHTML = "Não";
+                }
+            }
+        </script>
+
+    </table>
+</div>
+
+{% endblock %}
+
